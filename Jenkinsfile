@@ -25,10 +25,10 @@ pipeline {
     }
     post {
         success {
-          githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'other test', description: 'It works', credentialsId: 'pchynoweth', status: 'SUCCESS'
+          githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'other test', description: 'It works', credentialsId: 'github', status: 'SUCCESS'
         }
         failure {
-          githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'other test', description: 'This commit cannot be built', credentialsId: 'pchynoweth', status: 'FAILURE'
+          githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'other test', description: 'This commit cannot be built', credentialsId: 'github', status: 'FAILURE'
         }
     }
 }
