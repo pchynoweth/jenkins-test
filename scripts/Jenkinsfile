@@ -24,11 +24,14 @@ pipeline {
         }
     }
     post {
+        environment { 
+            GITHUB_SECRET = credentials('github-2') 
+        }
         success {
-          githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'something test', description: 'It works',  status: 'success'
+            echo 'success'
         }
         failure {
-          githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'something test', description: 'This commit cannot be built',  status: 'failure'
+            echo 'failure'
         }
     }
 }
