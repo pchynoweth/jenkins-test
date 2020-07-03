@@ -9,7 +9,10 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                parallel (
+                    echo 'Testing..'
+                    echo 'parallel'
+                )
             }
         }
         stage('Approval') {
