@@ -25,10 +25,10 @@ pipeline {
     }
     post {
         success {
-          githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'something test', description: 'It works',  status: 'SUCCESS'
+          githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'something test', description: 'It works',  status: 'success'
         }
         failure {
-          githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'something test', description: 'This commit cannot be built',  status: 'FAILED'
+          githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'something test', description: 'This commit cannot be built',  status: 'failure'
         }
     }
 }
