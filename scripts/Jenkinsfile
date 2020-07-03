@@ -1,6 +1,9 @@
 pipeline {
     agent any
 
+    environment { 
+        GITHUB_SECRET = credentials('github-2') 
+    }
     stages {
         stage('Build') {
             steps {
@@ -24,9 +27,6 @@ pipeline {
         }
     }
     post {
-        environment { 
-            GITHUB_SECRET = credentials('github-2') 
-        }
         success {
             echo 'success'
         }
