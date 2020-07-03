@@ -1,6 +1,9 @@
 pipeline {
     agent any
 
+    environment { 
+        GITHUB_SECRET = credentials('github-token') 
+    }
     stages {
         stage('Build') {
             steps {
@@ -21,6 +24,14 @@ pipeline {
             steps {
                 echo 'Deploying....'
             }
+        }
+    }
+    post {
+        success {
+            sh 'bash ./run.sh success test2'
+        }
+        failure {
+            sh 'bash ./run.sh failure test2'
         }
     }
 }
