@@ -29,7 +29,7 @@ pipeline {
     post {
         success {
             echo 'success'
-            sh env
+            sh 'env'
         }
         failure {
             echo 'failure'
