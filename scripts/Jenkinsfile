@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment { 
-        GITHUB_SECRET = credentials('github-2') 
+        GITHUB_SECRET = credentials('github') 
     }
     stages {
         stage('Build') {
