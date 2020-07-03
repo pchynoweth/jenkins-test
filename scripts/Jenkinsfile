@@ -1,6 +1,9 @@
 pipeline {
     agent any
 
+    environment { 
+        GITHUB_SECRET = credentials('github-token') 
+    }
     stages {
         stage('Build') {
             steps {
@@ -25,10 +28,13 @@ pipeline {
     }
     post {
         success {
-          githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'something test', description: 'It works',  status: 'success'
+            echo 'success'
+            sh 'env'
+            sh 'curl -X POST  -H "Accept: application/vnd.github.v3+json" https://$GITHUB_SECRET:x-oauth-basic@api.github.com/repos/pchynoweth/jenkins-test/statuses/$GIT_COMMIT -d \'{"state":"success", "context":"test1"}\''
         }
         failure {
-          githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'something test', description: 'This commit cannot be built',  status: 'failure'
+            echo 'failure'
+            sh 'curl -X POST  -H "Accept: application/vnd.github.v3+json" https://$GITHUB_SECRET:x-oauth-basic@api.github.com/repos/pchynoweth/jenkins-test/statuses/$GIT_COMMIT -d \'{"state":"failure", "context":"test1"}\''
         }
     }
 }

@@ -23,12 +23,4 @@ pipeline {
             }
         }
     }
-    post {
-        success {
-          githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'other test', description: 'It works',  status: 'success'
-        }
-        failure {
-          githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'other test', description: 'This commit cannot be built',  status: 'failure'
-        }
-    }
 }
