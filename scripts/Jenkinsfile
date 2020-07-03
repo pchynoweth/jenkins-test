@@ -9,15 +9,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                parallel (
-                    echo 'Testing..'
-                    echo 'parallel'
-                )
-            }
-        }
-        stage('Approval') {
-            steps {
-                input message: 'Ready for deployment...'
+                echo 'parallel'
             }
         }
         stage('Deploy') {
