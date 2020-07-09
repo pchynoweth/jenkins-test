@@ -5,7 +5,7 @@ pipeline {
     }
     stages {
     	stage('Abort stale jobs') {
-			agent none
+		    agent none
 			
 		    steps {
 		    	milestone label: '', ordinal:  Integer.parseInt(env.BUILD_ID) - 1
