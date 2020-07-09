@@ -28,13 +28,13 @@ pipeline {
 					agent any
 				    steps {
 				        echo 'parallel'
+						sh 'env'
 				    }
 				}
 				stage('Deploy') {
 				    steps {
 				        echo 'Deploying....'
 				        echo "${BUILD_NUMBER}"
-                        sh 'env'
 				    }
 				}
 		    }
