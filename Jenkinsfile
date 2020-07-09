@@ -20,9 +20,15 @@ pipeline {
             }
             stages {
                 stage('Test') {
+                    agent any
                     steps {
                         echo 'parallel'
                         sh './up-to-date.sh'
+                    }
+                    post {
+                        failure {
+                            echo 'This branch is out-of-date'
+                        }
                     }
                 }
                 stage('Test2') {
