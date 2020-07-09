@@ -21,21 +21,25 @@ pipeline {
             stages {
                 stage('Test') {
                     agent any
-                    steps {
-                        echo 'parallel'
-                        sh 'bash ./up-to-date.sh'
-                    }
-                    post {
-                        failure {
-                            echo 'This branch is out-of-date'
+                    stages {
+                        stage('Check up-to-date') {
+                            steps {
+                                echo 'parallel'
+                                sh 'bash ./up-to-date.sh'
+                            }
+                            post {
+                                failure {
+                                    sh 'env'
+                                    echo 'This branch is out-of-date'
+                                }
+                            }
                         }
-                    }
-                }
-                stage('Test2') {
-                    agent any
-                    steps {
-                        echo 'parallel'
-                        sh 'env'
+                        stage('Test2') {
+                            steps {
+                                echo 'parallel'
+                                sh 'env'
+                            }
+                        }
                     }
                 }
                 stage('Deploy') {
