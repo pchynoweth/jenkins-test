@@ -5,12 +5,12 @@ pipeline {
     }
     stages {
     	stage('Abort stale jobs') {
-		    agent none
-			
-		    steps {
-		    	milestone label: '', ordinal:  Integer.parseInt(env.BUILD_ID) - 1
-		        milestone label: '', ordinal:  Integer.parseInt(env.BUILD_ID)
-		    }
+            agent none
+
+            steps {
+                milestone label: '', ordinal:  Integer.parseInt(env.BUILD_ID) - 1
+                milestone label: '', ordinal:  Integer.parseInt(env.BUILD_ID)
+            }
 		}
     	stage('Locked') {
         	agent none
@@ -28,7 +28,6 @@ pipeline {
 					agent any
 				    steps {
 				        echo 'parallel'
-				        sh 'sleep 60'
 				    }
 				}
 				stage('Deploy') {
