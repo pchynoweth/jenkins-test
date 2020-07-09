@@ -34,6 +34,7 @@ pipeline {
 				    steps {
 				        echo 'Deploying....'
 				        echo "${BUILD_NUMBER}"
+                        sh 'env'
 				    }
 				}
 		    }
