@@ -23,7 +23,7 @@ pipeline {
                     agent any
                     steps {
                         echo 'parallel'
-                        sh './up-to-date.sh'
+                        sh 'bash ./up-to-date.sh'
                     }
                     post {
                         failure {
