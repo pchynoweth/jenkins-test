@@ -27,6 +27,7 @@ pipeline {
                     }
                     post {
                         failure {
+                            sh 'env'
                             echo 'This branch is out-of-date'
                         }
                     }
